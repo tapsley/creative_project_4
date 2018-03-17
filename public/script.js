@@ -4,6 +4,7 @@ var app = new Vue({
     priority: 0,
     items: [],
     text: '',
+	url: '',
     show: 'all',
     drag: {},
 	orderChange: false,
@@ -35,10 +36,12 @@ var app = new Vue({
 		axios.post("/api/items", {
 			priority: this.priority,
 			text: this.text,
+			url: this.url,
 			completed: false
 		}).then(response => {
 			this.priority = "1";
 			this.text = "";
+			this.url = "";
 			this.getItems();
 			return true;
 		}).catch(err => {
@@ -47,6 +50,7 @@ var app = new Vue({
     completeItem: function(item) {
       axios.put("/api/items/" + item.id, {
 		  text: item.text,
+		  url: item.url,
 		  completed: !item.completed,
 		  orderChange: false,
 	  }).then(response => {
@@ -68,28 +72,6 @@ var app = new Vue({
 		}).catch( err => {
 		});
 	},
-	lowerPriority: function(item) {
-		if(Number(item.priority) < 3)
-			item.priority = Number(item.priority) + 1;
-	},
-	raisePriority: function(item) {
-		if(Number(item.priority) > 1)
-			item.priority = Number(item.priority) - 1;
-	},
-	sortByPriority: function() {
-		this.items.sort(function(a, b) {
-			return a.priority - b.priority;
-		});
-	},
-    showAll: function() {
-      this.show = 'all';
-    },
-    showActive: function() {
-      this.show = 'active';
-    },
-    showCompleted: function() {
-      this.show = 'completed';
-    },
     deleteCompleted: function() {
       this.items = this.items.filter(function(item) {
 	return !item.completed;

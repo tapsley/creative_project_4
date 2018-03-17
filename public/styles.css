@@ -13,13 +13,15 @@ ul {
 
 li {
     background: #fff;
-    width: 500px;
+    width: 240px;
     min-height: 30px;
     padding: 10px;
     margin-bottom: 10px;
     font-size: 1em;
     display: flex;
     align-items: center;
+	flex-direction: column;
+	justify-content: space-around;
 }
 
 .delete {
@@ -31,9 +33,6 @@ li:hover .delete {
     display: block;
 }
 
-label {
-    width: 400px;
-}
 
 .completed {
     text-decoration: line-through;

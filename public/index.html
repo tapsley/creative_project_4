@@ -3,33 +3,23 @@
   <head>
     <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
     <link rel="stylesheet" href="styles.css"/>
-    <title>Vue Todo lol</title>
+    <title>Gallery</title>
   </head>
   <body>
     <div id="app">
-      <h1>A List of Things To Do</h1>
-      <p v-show="activeItems.length === 0">You are done with all your tasks! Good job!</p>
+      <h1>Build your own Gallery</h1>
+      <p >Add images to your gallery</p>
       <form v-on:submit.prevent="addItem">
-	<input type="text" v-model="text">
-	<input type="number" v-model="priority" min="1" max="3">
-	<button type="submit">Add</button>
+		<input type="text" v-model="url"><label>URL</label><br>
+		<input type="text" v-model="text"><label>Description</label><br>
+		<button type="submit">Add</button>
       </form>
-      <div class="controls">
-	<button v-on:click="sortByPriority()">Sort by Priority</button>
-	<button v-on:click="showAll()">Show All</button>
-	<button v-on:click="showActive()">Show Active</button>
-	<button v-on:click="showCompleted()">Show Completed</button>
-	<button v-on:click="deleteCompleted()">Delete Completed</button>
-      </div>
       <ul>
-	<li v-for="item in filteredItems" draggable="true" v-on:dragstart="dragItem(item)" v-on:dragover.prevent v-on:drop="dropItem(item)">
-	  <input type="checkbox" v-model="item.completed" v-on:click="completeItem(item)" />
-	  <label v-bind:class="{ completed: item.completed }">{{ item.text }}</label>
-	  <button v-on:click="raisePriority(item)" class="up">/\</button>
-	  <label>{{ item.priority }}</label>
-	  <button v-on:click="lowerPriority(item)" class="down">\/</button>
-	  <button v-on:click="deleteItem(item)" class="delete">X</button>
-	</li>
+		<li v-for="item in filteredItems" draggable="true" v-on:dragstart="dragItem(item)" v-on:dragover.prevent v-on:drop="dropItem(item)">
+		  <img src={{ item.url }} alt="image"/>
+		  <label>{{ item.text }}</label>
+		  <button v-on:click="deleteItem(item)" class="delete">X</button>
+		</li>
       </ul>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
