@@ -54,7 +54,7 @@ var app = new Vue({
 		  completed: !item.completed,
 		  orderChange: false,
 	  }).then(response => {
-		  return true,
+		  return true;
 	  }).catch(err => {
 	  });
     },
