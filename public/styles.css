@@ -29,8 +29,15 @@ li {
     margin-left: auto;
 }
 
-li:hover .delete {
+.picture:hover .delete {
     display: block;
+}
+
+.picture {
+	display: flex;
+    align-items: center;
+	flex-direction: column;
+	justify-content: space-around;
 }
 
 
@@ -58,4 +65,12 @@ button {
 
 .controls {
     margin-top: 20px;
+}
+
+#gallery {
+	display: flex;
+}
+
+image {
+	width: 150px;
 }
