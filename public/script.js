@@ -12,7 +12,7 @@ var app = new Vue({
   },
   created: function() {
 	  this.getItems();
-  }
+  },
   computed: {
     activeItems: function() {
       return this.items.filter(function(item) {
