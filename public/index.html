@@ -16,7 +16,7 @@
       </form>
       <ul>
 		<li v-for="item in filteredItems" draggable="true" v-on:dragstart="dragItem(item)" v-on:dragover.prevent v-on:drop="dropItem(item)">
-		  <img v-attr=src:"item.url" alt="image"/>
+		  <img v-bind=src:"data.url" alt="image"/>
 		  <label>{{ item.text }}</label>
 		  <button v-on:click="deleteItem(item)" class="delete">X</button>
 		</li>
