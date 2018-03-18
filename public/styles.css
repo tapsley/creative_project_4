@@ -38,6 +38,7 @@ li {
     align-items: center;
 	flex-direction: column;
 	justify-content: space-around;
+	margin: 19px;
 }
 
 
@@ -69,8 +70,10 @@ button {
 
 #gallery {
 	display: flex;
+	flex-wrap: wrap;
 }
 
 image {
 	width: 150px;
+	height: 150px;
 }
