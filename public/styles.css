@@ -25,12 +25,12 @@ li {
 }
 
 .delete {
-    display: none;
+    visibility: hidden;
     margin-left: auto;
 }
 
 .picture:hover .delete {
-    display: block;
+    visibility: visible;
 }
 
 .picture {
